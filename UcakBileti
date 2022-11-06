@@ -1,0 +1,44 @@
+import java.util.Scanner;
+public class UcakBiletiFiyati {
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Uçulacak Mesafe Km : ");
+        int distance = input.nextInt();
+        System.out.print("Yaşınız : ");
+        int yas = input.nextInt();
+        System.out.print("1.Tek Yön , 2.Gidiş-Dönüş : ");
+        int type = input.nextInt();
+
+        int toplamFiyat = 0;
+
+        if(distance>0) {
+            toplamFiyat += distance * 0.10;
+        }else {
+            System.out.println("Hatalı Giriş");
+            return;
+        }
+        if(yas > 0) {
+            if(yas < 12) {
+                toplamFiyat -= toplamFiyat * 50/100;
+            }else if(yas >= 12 && yas<= 24) {
+                toplamFiyat -= toplamFiyat * 10/100;
+            }else if(yas >= 65) {
+                toplamFiyat -= toplamFiyat * 30/100;
+            }else toplamFiyat=+toplamFiyat*100;
+        }else {
+            System.out.println("Hatalı Giriş");
+            return;
+        }
+        if(type == 1 || type == 2) {
+            if(type == 2) {
+                toplamFiyat -= toplamFiyat * 20/100;
+                toplamFiyat *= 2;
+            }
+        }else {
+            System.out.println("Hatalı Giriş");
+            return;
+        }
+        System.out.println("Toplam Tutar: " + toplamFiyat);
+    }
+}
